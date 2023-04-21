@@ -3,6 +3,8 @@ import 'package:meal_apk/models/meal.dart';
 import 'package:meal_apk/screens/categories.dart';
 import 'package:meal_apk/screens/meals.dart';
 import 'package:meal_apk/widgets/main-drawer.dart';
+import 'package:meal_apk/screens/filters.dart';
+//import 'package:meal_apk/screens/tabs_screen.dart';
 
 import 'filters.dart';
 
@@ -50,12 +52,15 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier){
+  void _setScreen(String identifier) async{
     Navigator.of(context).pop();
     if (identifier=='filters'){
 
-      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const FiltersScreen(),),
+
+    final result =  Navigator.of(context).push<Map<Filter, bool>>(MaterialPageRoute(builder: (ctx) =>  FiltersScreen(currentFilters:_selectedFilters ,),
+      ),
       );
+    print(result);
     }
 
 
